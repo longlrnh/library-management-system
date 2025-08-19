@@ -33,6 +33,7 @@ public class UserManagementView {
     private Label totalUsersLabel;
     private Label activeUsersLabel;
 
+
     public UserManagementView(LibraryController controller) {
         this.controller = controller;
     }
@@ -40,6 +41,7 @@ public class UserManagementView {
     public VBox createView() {
         VBox container = new VBox(12);
         container.setPadding(new Insets(12));
+
 
         // Header
         Label title = new Label("Quản lý thành viên");
@@ -92,6 +94,7 @@ public class UserManagementView {
         totalUsersLabel = new Label("Tổng thành viên: 0");
         activeUsersLabel = new Label("Đang hoạt động: 0");
         stats.getChildren().addAll(totalUsersLabel, activeUsersLabel);
+        
 
         container.getChildren().addAll(title, toolbar, table, stats);
 
