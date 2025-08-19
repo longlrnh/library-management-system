@@ -136,6 +136,7 @@ public class BookManagementView {
 
     public void refresh() {
         bookTable.setItems(FXCollections.observableArrayList(controller.getAllBooks()));
+        bookTable.refresh();
         clearForm();
     }
 
