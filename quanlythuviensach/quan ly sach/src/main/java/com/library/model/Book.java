@@ -14,6 +14,7 @@ public class Book extends Document {
     private double rating;
     private int ratingCount;
     private String description;
+    private int soLuong;
     
     public Book() {
         super();
@@ -32,7 +33,15 @@ public class Book extends Document {
         this.rating = 0.0;
         this.ratingCount = 0;
     }
-    
+
+    public Book(String isbn, String title, String author, String publisher, int publishYear, String genre, int soLuong) {
+        super(title, author, isbn);
+        this.publisher = publisher;
+        this.publishDate = LocalDate.of(publishYear, 1, 1);
+        this.genre = genre;
+        this.soLuong = soLuong;
+    }
+
     // Getters
     public String getPublisher() {
         return publisher;
@@ -41,7 +50,11 @@ public class Book extends Document {
     public LocalDate getPublishDate() {
         return publishDate;
     }
-    
+
+    public int getPublishYear() {
+        return publishDate != null ? publishDate.getYear() : 0;
+    }
+
     public int getPageCount() {
         return pageCount;
     }
@@ -65,6 +78,8 @@ public class Book extends Document {
     public String getDescription() {
         return description;
     }
+
+    public int getSoLuong() { return soLuong; }
     
     // Setters
     public void setPublisher(String publisher) {
@@ -98,6 +113,8 @@ public class Book extends Document {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setSoLuong(int soLuong) { this.soLuong = soLuong; }
     
     /**
      * Add a new rating to the book

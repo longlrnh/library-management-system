@@ -25,9 +25,9 @@ public class BookDAO {
      */
     public boolean save(Book book) {
         String sql = """
-            INSERT INTO books (isbn, title, author, publisher, publish_date, page_count, 
+            INSERT INTO books (isbn, title, author, publisher, publish_date, page_count, quantity, 
                               genre, language, rating, rating_count, description, is_borrowed)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
         
         try {
@@ -38,6 +38,7 @@ public class BookDAO {
                 book.getPublisher(),
                 book.getPublishDate() != null ? book.getPublishDate().toString() : null,
                 book.getPageCount(),
+                book.getSoLuong(),
                 book.getGenre(),
                 book.getLanguage(),
                 book.getRating(),
@@ -60,7 +61,7 @@ public class BookDAO {
      */
     public boolean update(Book book) {
         String sql = """
-            UPDATE books SET title=?, author=?, publisher=?, publish_date=?, page_count=?,
+            UPDATE books SET title=?, author=?, publisher=?, publish_date=?, page_count=?, quantity=?,
                            genre=?, language=?, rating=?, rating_count=?, description=?, is_borrowed=?
             WHERE isbn=?
         """;
@@ -72,6 +73,7 @@ public class BookDAO {
                 book.getPublisher(),
                 book.getPublishDate() != null ? book.getPublishDate().toString() : null,
                 book.getPageCount(),
+                book.getSoLuong(),
                 book.getGenre(),
                 book.getLanguage(),
                 book.getRating(),
@@ -276,6 +278,7 @@ public class BookDAO {
         }
         
         book.setPageCount(rs.getInt("page_count"));
+        book.setSoLuong(rs.getInt("quantity"));
         book.setGenre(rs.getString("genre"));
         book.setLanguage(rs.getString("language"));
         book.setRating(rs.getDouble("rating"));
